@@ -1,11 +1,16 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: "Open Store",
+  title: "Open Store Docs",
   description: "Open Store Documentation",
   lastUpdated: true,
   cleanUrls: true,
   assetsDir: 'static',
+  
+  head: [
+    ['link', { rel: 'icon', href: '/static/logo.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'shortcut icon', href: '/static/logo.svg' }]
+  ],
 
   themeConfig: {
     logo: '/static/logo.svg',

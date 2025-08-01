@@ -13,4 +13,4 @@ hero:
       text: Changelog
       link: /changelog.md
 --- -->
-# Main Welcome Page
+# Main Page
