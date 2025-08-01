@@ -8,12 +8,12 @@ export default defineConfig({
   assetsDir: 'static',
   
   head: [
-    ['link', { rel: 'icon', href: '/static/logo.svg', type: 'image/svg+xml' }],
-    ['link', { rel: 'shortcut icon', href: '/static/logo.svg' }]
+    ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'shortcut icon', href: '/logo.svg' }]
   ],
 
   themeConfig: {
-    logo: '/static/logo.svg',
+    logo: '/logo.svg',
     nav: [
       { 
         text: 'Main',
