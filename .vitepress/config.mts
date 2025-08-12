@@ -8,7 +8,7 @@ export default defineConfig({
   srcDir: 'src',
 
   sitemap: {
-    hostname: 'https://openstore.foundation',
+    hostname: 'https://docs.openstore.foundation',
     transformItems: (items) => {
       items.forEach(item => {
         item.changefreq = 'monthly'
