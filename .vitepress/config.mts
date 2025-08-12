@@ -5,7 +5,17 @@ export default defineConfig({
   description: "Open Store Documentation",
   lastUpdated: true,
   cleanUrls: true,
-  assetsDir: 'static',
+  srcDir: 'src',
+
+  sitemap: {
+    hostname: 'https://openstore.foundation',
+    transformItems: (items) => {
+      items.forEach(item => {
+        item.changefreq = 'monthly'
+      })
+      return items
+    }
+  },
   
   head: [
     ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
@@ -65,7 +75,7 @@ export default defineConfig({
     },
 
     footer: {
-      message: 'Released under the Apache License 2.0.',
+      message: 'Released under the MIT License.',
       copyright: 'Copyright © 2025 Open Store Foundation'
     },
 

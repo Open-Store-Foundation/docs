@@ -7,5 +7,6 @@
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.9.2",
+  "license": "MIT"
 }
