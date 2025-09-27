@@ -26,7 +26,7 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { 
-        text: 'Main',
+        text: 'Home',
         link: '/',
         activeMatch: '^/$|^/[^/]+$'
       },
@@ -35,11 +35,22 @@ export default defineConfig({
         link: '/docs/how-it-works',
         activeMatch: '/docs'
       },
-      { 
-        text: 'Changelog',
-        link: '/changelog/history.md',
-        activeMatch: '/changelog/'
+      {
+        text: 'Legal',
+        items: [
+          { text: 'Privacy Policy', link: '/privacy-policy' },
+          { text: 'Terms of Service', link: '/terms-of-service' }
+        ]
       },
+      // {
+      //   text: 'Changelog',
+      //   link: '/changelog/history.md',
+      //   activeMatch: '/changelog/'
+      // },
+      {
+        text: "Whitepaper",
+        link: "https://github.com/Open-Store-Foundation/whitepaper/blob/main/open-store-whitepaper-en.pdf"
+      }
     ],
 
     sidebar: {
@@ -60,7 +71,9 @@ export default defineConfig({
           items: [
             { text: 'How it works?', link: '/docs/how-it-works' },
             { text: 'Billing and Fees', link: '/docs/billing-and-fees' },
-            { text: 'Publishing Process', link: '/docs/publishing-process' }
+            { text: 'Publishing Process', link: '/docs/publishing-process' },
+            { text: 'Ownership Verification', link: '/docs/ownership-verification' },
+            { text: 'Custom Distribution', link: '/docs/custom-distribution' }
           ]
         }
       ],

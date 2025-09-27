@@ -114,7 +114,7 @@ Why this is allowed:
 
 Conclusion: if someone uses ChatSphere to arrange illegal transactions, that is misuse of a neutral tool and not grounds to delist the app from discovery.
 
-Example 2 (Not allowed): App purpose-built for selling illegal drugs
+Example 2 (Not allowed): AssetApp purpose-built for selling illegal drugs
 Now consider another app — "DrugDirect" — whose design, interface, and functionality are purpose-built for the sale of hard drugs:
 
 - On launch, DrugDirect opens a catalog with photos, prices, and seller ratings.
