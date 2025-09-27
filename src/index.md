@@ -11,7 +11,7 @@ hero:
       text: How it works
       link: /docs/how-it-works
     - theme: alt
-      text: Get started (Publishing)
+      text: Publishing
       link: /docs/publishing-process
     - theme: alt
       text: Whitepaper
