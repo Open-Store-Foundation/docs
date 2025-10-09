@@ -28,7 +28,7 @@ export default defineConfig({
       { 
         text: 'Home',
         link: '/',
-        activeMatch: '^/$|^/[^/]+$'
+        activeMatch: '^/$'
       },
       { 
         text: 'Docs',
@@ -56,9 +56,8 @@ export default defineConfig({
     sidebar: {
       "/": [
         {
-          text: 'Main',
+          text: 'Legal',
           items: [
-            { text: 'Open Store', link: '/' },
             { text: 'Privacy Policy', link: '/privacy-policy' },
             { text: 'Terms of Service', link: '/terms-of-service' }
           ]
