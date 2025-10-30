@@ -26,10 +26,6 @@ This page summarizes how billing and fees work in Open Store. It is written prim
 - Paid when you request Ownership Verification.
 - Amount is set by the Owner in the `AssetlinkOracleV1` contract.
 
-### Validation fee (Artifact Validation)
-
-- Paid when you submit an Asset Artifact for validation.
-- Amount is set by the Owner in the `OpenStore` contract.
 
 ### Optional publisher costs
 
@@ -45,26 +41,19 @@ This page summarizes how billing and fees work in Open Store. It is written prim
    - Pay the Oracle fee when submitting Ownership Verification.
 4. **Upload Asset Artifact**
    - Incurs Greenfield storage fees; cross-chain fees may apply for storage operations.
-5. **Artifact Validation**
-   - Pay the Validation fee when submitting a Validation Request.
-6. **Publication**
-   - On-chain gas for marking an artifact as published. You may choose:
-     - Publication only
-     - Separate validation then publication
-     - Combined validation + publication (one flow that may reduce the number of transactions)
-7. **Distribution to users**
+5. **Publication**
+   - On-chain gas for marking an artifact as published.
+6. **Distribution to users**
    - Greenfield downloads consume your prepaid download quote; or your CDN incurs its own fees if you use custom distribution.
 
-### Edge cases
-
-- If a Validation Request is marked UNAVAILABLE due to temporary blockchain issues, the Validation fee is not returned to the requester and is not paid out to validators; it remains in the protocol balance.
+ 
 
 ## Cost optimization tips (publishers)
 
 - **Keep Ownership Info stable**: Avoid unnecessary changes to endpoints and certificate fingerprints to reduce repeated Ownership Verifications.
 - **Use custom distribution for heavy traffic**: Offload downloads to your CDN/infra to control bandwidth costs. See: [Custom Distribution](/docs/custom-distribution)
 - **Prune old artifacts**: Delete unused versions to lower ongoing storage fees.
-- **Choose the right publish flow**: Combined validation + publication can reduce the number of on-chain transactions compared to running them separately.
+- **Choose the right publish flow**: Batch related actions to reduce the number of on-chain transactions.
 - **Monitor bucket read quote**: Prevent throttling or blocking by sizing the weekly download quote to expected demand.
 
 ## What users pay
@@ -76,5 +65,6 @@ This page summarizes how billing and fees work in Open Store. It is written prim
 ## Quick glossary
 
 - **Ownership Verification**: Confirms a link between your app and your website via asset links; paid Oracle fee.
-- **Artifact Validation**: Verifies an uploaded artifact’s structure, signatures, and metadata; paid Validation fee.
+- **Proof Validation**: Daemon and clients verify ownership proofs (signature over `caip2ChainId::appAddress::sha256CertificateFingerprint` using the X509 certificate) against on-chain Ownership Info.
+- **Artifact Validation**: User-side check before install that the artifact’s certificates and signatures match the Ownership Info and expected checksums.
 - **Greenfield storage**: File storage for artifacts billed weekly for storage and download quotas.

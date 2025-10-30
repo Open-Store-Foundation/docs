@@ -23,7 +23,8 @@ This guide describes the end‑to‑end publishing flow for publishers: what dat
 
 - Asset Endpoint: your website domain (e.g., https://example.com)
 - Certificate SHA‑256 Fingerprints: all signing cert fingerprints
-- ProofOfCertificateOwnership: signature over 'APP_ADDRESS::SHA256_CERT_FINGERPRINT'
+- X509 DER Certificate (bytes): the certificate corresponding to each fingerprint
+- ProofOfCertificateOwnership: signature over 'caip2ChainId::appAddress::sha256CertificateFingerprint'
 
 ### Artifact (Build) Info
 
@@ -41,32 +42,19 @@ Ownership Verification checks that your app is linked to your domain:
 - The oracle fetches $ENDPOINT/.well-known/assetlinks.json
 - It finds the entry for your app and compares SHA‑256 certificate fingerprints with those saved on‑chain
 - If all required fingerprints match, verification succeeds (Oracle fee applies)
-- After success, you can submit artifacts for Artifact Validation
+ 
 
-## Publishing variants
-
-You control validation and publication independently to fit your workflow and budget:
-
-1. Publication only
-   - The artifact is marked as published but not validated
-   - Discoverability: by address only (Explorer mode)
-
-2. Separate validation then publication
-   - First perform Artifact Validation (Validation fee), then publish later
-   - Discoverability after publication: catalog and name search (requires Ownership Verification + Artifact Validation)
-
-3. Combined validation + publication
-   - Submit for validation and request auto‑publication on success in one flow
+## Publication
 
 Notes
 
 - Without Ownership Verification you can still publish, but artifacts will not appear in catalog/name search; they remain accessible by address
-- Artifact Validation requires Ownership Verification to be completed successfully
+- Catalog and search require Ownership Verification and Proof Validation to succeed
 
 ## Asset availability and Terms
 
 - Catalog and search
-  - Shown only for apps that passed Ownership Verification and Artifact Validation
+  - Shown only for apps that passed Ownership Verification and Proof Validation
   - Apps that violate the Terms of Service may be removed from catalog and search
 
 - Explorer mode (by address)

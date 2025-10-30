@@ -15,8 +15,11 @@ This guide explains what publishers must provide to verify ownership and how the
 - AssetApp address
   - Example: 0x1234567890abcdef1234567890abcdef12345678
 
+- X509 DER certificate (bytes) for each fingerprint
+  - The certificate is stored on‑chain alongside the fingerprint.
+
 - ProofOfCertificateOwnership for each certificate
-  - Message format: 'APP_ADDRESS::SHA256_CERT_FINGERPRINT'
+  - Message format: 'caip2ChainId::appAddress::sha256CertificateFingerprint'
   - Sign the message with the private key corresponding to the certificate (one proof per fingerprint)
   - A helper script is available: proof_gen.py
     - https://github.com/Open-Store-Foundation/studio/blob/main/src/assets/proof_gen.py
@@ -51,9 +54,8 @@ Example assetlinks entry
 
 ## Proofs and APK validation
 
-- During Artifact Validation, the validator extracts the public key from the APK and verifies each ProofOfCertificateOwnership signature against the message 'APP_ADDRESS::SHA256_CERT_FINGERPRINT'.
-- The oracle step verifies the website’s assetlinks entry matches the on‑chain packageName and certificate fingerprints; signature authenticity is enforced during artifact validation.
+- Proof Validation: The daemon and clients verify each ProofOfCertificateOwnership signature against the message 'caip2ChainId::appAddress::sha256CertificateFingerprint' using the public key contained in the provided X509 certificate.
+- The oracle step verifies the website’s assetlinks entry matches the on‑chain packageName and certificate fingerprints; signature authenticity is enforced during proof validation and by clients before install.
 
 - On every install or update, the client re‑checks all proofs and certificate fingerprints locally. If any check fails, installation is blocked.
-- On‑chain validation mainly provides observability and protects the catalog from showing incorrect builds. The client’s local checks remain the final gate before installation.
 
